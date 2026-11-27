@@ -2,7 +2,7 @@
   <img src="assets/ponkan.svg" width="245" alt="pon//kan.">
 </p>
 
-<p align="center">Save, restore and share your VALORANT settings.</p>
+<p align="center">Keep your VALORANT settings in profiles you can switch between or share.</p>
 
 <p align="center">
   <a href="https://github.com/rfpupo/ponkan/releases/download/v0.3.0-beta/ponkan_0.3.0_x64-setup.exe"><img src="assets/download.svg" height="38" alt="Download for Windows"></a>
@@ -10,10 +10,8 @@
 
 <p align="center">
   <a href="https://github.com/rfpupo/ponkan/releases"><img src="assets/releases.svg" height="38" alt="All releases"></a>
-  <a href="https://github.com/rfpupo/ponkan/issues/new"><img src="assets/report.svg" height="38" alt="Report a bug"></a>
+  <a href="https://github.com/rfpupo/ponkan/issues/new" title="Report a bug"><img src="assets/report.svg" height="38" alt="Report a bug" title="Report a bug"></a>
 </p>
-
-> **Release status:** Version 0.3.0 is being prepared for its first beta release. The installer will be available here once published. See [Limitations](#limitations) for the current development and testing status.
 
 ## About
 
