@@ -5,7 +5,7 @@
 <p align="center">Keep your VALORANT settings in profiles you can switch between or share.</p>
 
 <p align="center">
-  <a href="https://github.com/rfpupo/ponkan/releases/download/v0.3.0-beta/ponkan_0.3.0_x64-setup.exe"><img src="assets/download.svg" height="38" alt="Download for Windows"></a>
+  <a href="https://github.com/rfpupo/ponkan/releases/download/v0.3.0-beta/ponkan_0.3.0_x64-setup.exe"><img src="assets/download.svg" height="48" alt="Download for Windows"></a>
 </p>
 
 <p align="center">
