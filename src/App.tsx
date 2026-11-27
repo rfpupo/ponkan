@@ -913,6 +913,18 @@ function App() {
                           <UserPlus size={16} /> {t("Novo perfil")}
                         </Button>
                       )}
+                      {page === "profiles" && (
+                        <Button
+                            size="icon-lg"
+                            variant="ghost"
+                            className="ponkan-trash-shortcut"
+                            aria-label={t("Lixeira")}
+                            title={t("Lixeira")}
+                            onClick={() => openTrash("profiles")}
+                          >
+                            <Trash2 size={21} />
+                          </Button>
+                      )}
                       <Button
                         size="icon-lg"
                         variant="ghost"
@@ -966,16 +978,6 @@ function App() {
                         <UserPlus size={16} /> {t("Novo perfil")}
                       </Button>
                       <div className="ponkan-import-actions">
-                        <Button
-                          size="icon-lg"
-                          variant="outline"
-                          className="ponkan-trash-shortcut"
-                          aria-label={t("Lixeira")}
-                          title={t("Lixeira")}
-                          onClick={() => openTrash("profiles")}
-                        >
-                          <Trash2 size={20} />
-                        </Button>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button variant="outline" disabled={busy}>
@@ -1030,16 +1032,6 @@ function App() {
                           </SelectContent>
                         </Select>
                         <div className="ponkan-import-actions">
-                          <Button
-                            size="icon-lg"
-                            variant="outline"
-                            className="ponkan-trash-shortcut"
-                            aria-label={t("Lixeira")}
-                            title={t("Lixeira")}
-                            onClick={() => openTrash("profiles")}
-                          >
-                            <Trash2 size={20} />
-                          </Button>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                               <Button variant="outline" disabled={busy}>

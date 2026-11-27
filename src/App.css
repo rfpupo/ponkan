@@ -1391,7 +1391,7 @@ img {
   flex: 0 0 37px;
 }
 
-/* Settings access in the profile header, including the empty state. */
+/* Profile header shortcuts, including the empty state. */
 .ponkan-profile-header-actions {
   grid-column: 3;
   grid-row: 1;
@@ -1400,17 +1400,20 @@ img {
   align-items: center;
   gap: 8px;
 }
+.ponkan-profile-header-actions .ponkan-trash-shortcut,
 .ponkan-profile-header-actions .ponkan-settings-shortcut {
   width: 40px;
   height: 40px;
   min-width: 40px;
   color: var(--muted-foreground);
 }
+.ponkan-profile-header-actions .ponkan-trash-shortcut svg,
 .ponkan-profile-header-actions .ponkan-settings-shortcut svg {
   width: 21px;
   height: 21px;
   transition: transform 200ms ease;
 }
+.ponkan-profile-header-actions .ponkan-trash-shortcut:hover,
 .ponkan-profile-header-actions .ponkan-settings-shortcut:hover {
   background: var(--muted);
   color: var(--foreground);
@@ -1526,7 +1529,7 @@ img {
   padding-bottom: 24px;
 }
 
-/* Trash shortcut stays directly beside Import in both profile states. */
+/* Import action alignment in both profile states. */
 .ponkan-import-actions {
   display: flex;
   align-items: center;
@@ -1535,21 +1538,6 @@ img {
 }
 .linear-toolbar > .ponkan-import-actions {
   margin-left: auto;
-}
-.ponkan-import-actions .ponkan-trash-shortcut[data-slot="button"] {
-  width: 39px;
-  height: 39px;
-  min-width: 39px;
-  padding: 0;
-  flex: none;
-  color: var(--muted-foreground);
-}
-.ponkan-import-actions .ponkan-trash-shortcut:hover {
-  color: var(--foreground);
-}
-.ponkan-import-actions .ponkan-trash-shortcut svg {
-  width: 20px;
-  height: 20px;
 }
 .ponkan-trash-empty-page > .linear-header {
   flex: none;
