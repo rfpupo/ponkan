@@ -30,7 +30,7 @@ time = { version = "=0.3.55", features = ["serde-well-known"] }
 sha2 = "0.10"
 unicode-normalization = "0.1"
 walkdir = "2"
-sysinfo = "0.35"
+sysinfo = "0.40"
 zip = { version = "9.8.2", default-features = false, features = ["deflate-flate2-zlib-rs"] }
 rfd = { version = "0.18.0", default-features = false }
 
