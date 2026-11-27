@@ -14,46 +14,47 @@
 
 <p align="center"><img src="assets/version.svg" height="24" alt="0.3.0 Beta | Windows 11 x64 | MIT"></p>
 
-> **Release status:** The 0.3.0 beta candidate has not been published. Download links will work when the release is available. See [Limitations](#limitations) before using the application.
+> **Release status:** Version 0.3.0 is being prepared for its first beta release. The installer will be available here once published. See [Limitations](#limitations) for the current development and testing status.
 
 ## About
 
-Ponkan is a free, independent, open-source Windows desktop application for managing VALORANT settings profiles. It is designed for players who want to keep several setups, switch between them without manually reconstructing their settings, or share a portable profile with someone else.
+Ponkan is a free, open-source desktop app for managing your VALORANT settings on Windows. If you like to experiment with different configurations or keep a separate setup for practice, you can save each one as a profile and return to it later.
 
-Instead of repeatedly changing settings in the game, save a named profile and restore it when needed. Keep separate competitive and practice setups, retain a backup before experimenting, or organize settings from different configurations in one local library.
+Each profile has its own name and can be managed from a single library. You can also export a profile to a file or share supported settings with a friend through a short code.
 
-Ponkan is not a VALORANT client, an in-game overlay or a gameplay automation tool. Its scope is settings management outside the game.
+Ponkan works outside the game. It focuses on settings management and does not include an in-game overlay or gameplay automation.
 
 <p align="center"><img src="assets/screenshots/profiles.png" alt="Ponkan profile library with three example profiles" width="850"></p>
-<p align="center"><sub>Application interface captured with synthetic example profiles. No live Riot account data is shown.</sub></p>
+<p align="center"><sub>The profile library, shown with example profiles and no real account data.</sub></p>
 
 ## Features
 
 <img src="assets/section-mark.svg" width="22" alt=""> **Profile management**
 
-- **Save and update:** Create named snapshots of your current local and Riot cloud preferences. Update an existing profile using its save action.
-- **Apply:** Restore a stored profile with VALORANT closed. The backend checks the current session and can optionally create a backup before applying changes.
-- **Organize:** Search, sort, rename and favorite profiles. Assign a custom profile image or use the default cat avatar.
-- **Compare:** Where supported, a matching indicator shows that the saved local and cloud settings correspond to the current settings.
-- **Recycle bin:** Restore accidentally deleted profiles or permanently remove them. Retention can be configured in Settings.
+- **Save and update:** Save your current local and Riot cloud settings as a named profile. If you make changes later, use the save icon to update it.
+- **Apply:** Restore a profile while VALORANT is closed. Ponkan checks the Riot session and can back up your current configuration first.
+- **Organize:** Search, sort, rename and favorite profiles. Give each profile its own image or keep the default cat avatar.
+- **Compare:** For supported profiles, an indicator lets you know when the saved settings match your current local and cloud configuration.
+- **Recycle bin:** Recover deleted profiles or remove them permanently. You can choose how long they stay in the recycle bin.
 
 <img src="assets/section-mark.svg" width="22" alt=""> **Import and sharing**
 
-- **File export (.pkn):** Save a profile to a local file for backup or transfer. Exports support optional author, description and avatar metadata.
-- **File import:** Preview the profile, check its name and import it into the library. Imports do not automatically apply the profile to the game.
-- **Short share codes:** Generate a compact code for supported portable settings, or import a code someone sends you. This optional feature requires an internet connection and uses is.gd.
+- **File export (.pkn):** Keep a copy of a profile or send it to someone as a local file. You can include an author, description and avatar.
+- **File import:** Preview a profile, choose its name and add it to your library. Importing a profile leaves your current game settings untouched until you apply it.
+- **Short share codes:** Share supported settings without sending a file. Codes are optional and use is.gd, so generating or importing one requires an internet connection.
 
 <img src="assets/section-mark.svg" width="22" alt=""> **Application preferences**
 
-- Dark, light and system appearance.
-- English, Portuguese (Brazil) and Spanish interface languages.
-- Confirmation before applying or overwriting profiles.
-- Optional automatic backup before applying a profile.
-- Windows startup, minimized startup, close-to-tray behavior and recycle bin retention.
+- Choose between dark, light and system appearance.
+- Use the app in English, Brazilian Portuguese or Spanish.
+- Configure confirmations before applying or overwriting profiles.
+- Enable automatic backups before switching profiles.
+- Choose whether Ponkan starts with Windows, starts minimized or closes to the system tray.
+- Set the recycle bin retention period.
 
 ## Screenshots
 
-The following captures use the application's existing interface with synthetic data, not a redesigned mockup or proof of live Riot integration.
+A closer look at the settings page and the sharing options. The screenshots were captured using the app's interface with example data.
 
 <table>
   <tr>
@@ -72,85 +73,88 @@ The following captures use the application's existing interface with synthetic d
 | --- | --- |
 | Operating system | Windows 11, 64-bit |
 | Runtime | Microsoft Edge WebView2 (the installer can download its bootstrapper) |
-| Game services | VALORANT installed and Riot Client signed in for settings operations |
-| Internet | Required for communication with Riot and optional short share codes |
+| Game services | VALORANT installed, with the Riot Client signed in when saving or applying profiles |
+| Internet | Needed to communicate with Riot and use short share codes |
 
 ### Install
 
-1. Open [Releases](https://github.com/rfpupo/ponkan/releases) and download `ponkan_0.3.0_x64-setup.exe` once the beta is published.
-2. Optionally download `SHA256SUMS.txt` and compare the installer checksum using PowerShell:
+1. Once the beta is published, open [Releases](https://github.com/rfpupo/ponkan/releases) and download `ponkan_0.3.0_x64-setup.exe`.
+2. If you want to verify your download, compare the result of the following PowerShell command with the value in `SHA256SUMS.txt`:
 
    ```powershell
    Get-FileHash .\ponkan_0.3.0_x64-setup.exe -Algorithm SHA256
    ```
 
-3. Run the installer and follow the instructions. It installs for the current Windows user.
+3. Run the installer and follow the setup instructions. Ponkan installs for your current Windows user.
 4. Open Ponkan from the Start menu.
 
-**Important:** The installer is unsigned, so Windows SmartScreen may warn about it. A matching checksum confirms the downloaded file matches the published file; it is not a guarantee of safety. Do not bypass a security warning for an unexpected or modified installer.
+The beta installer is not digitally signed, so you may see a Windows SmartScreen warning. The checksum lets you check whether your download matches the published installer, although it cannot establish that a program is safe. Always download from the project's official releases and take unexpected security warnings seriously.
 
-If an older version or legacy data is detected, the installer may block installation. Back up the old profiles and preserve their data; do not delete it to bypass the guard. Automatic migration is not supported in this candidate.
+If you're coming from an older version, keep a backup of your existing profiles. The installer can block an upgrade when it detects legacy data because automatic migration is not yet supported. Leave that data in place.
 
 ## Getting started
 
 ### Save your first profile
 
-1. Sign in to the Riot Client and configure VALORANT as desired.
-2. Close VALORANT before managing your settings.
-3. Open Ponkan, select **Profiles**, then **New profile**.
-4. Enter a name that makes the configuration easy to recognize and save it.
+1. Sign in to the Riot Client and set up VALORANT the way you normally play.
+2. Close VALORANT.
+3. Open Ponkan, go to **Profiles** and select **New profile**.
+4. Give the profile a name and save it.
 
 ### Restore or update a profile
 
-1. Keep VALORANT closed and the intended Riot account signed in.
-2. Locate the saved profile and select **Apply** to restore it.
-3. Wait for the operation to finish before opening the game.
-4. To overwrite a profile with your current settings, use its save icon instead of creating a new entry.
+1. Make sure VALORANT is closed and you're signed in to the intended Riot account.
+2. Find the profile you want to use and select **Apply**.
+3. Once the operation finishes, you can open the game again.
+4. If you want to save your latest changes to an existing profile instead, select its save icon.
 
-Automatic backup can preserve a copy of the current configuration before applying another one. It is not a substitute for keeping independent backups, especially during the beta.
+You can turn on automatic backups in Settings to keep a copy of your current configuration before switching. Keeping a separate backup is also a good idea while testing a beta.
 
 ### Import or share a profile
 
-Use the profile's options menu to open **Share profile**. Select **Generate share code** for supported portable settings, or **Export file (.pkn)** to save a local file. The **Import** action in the profile library supports importing a file or code.
+Open a profile's options menu and choose **Share profile**. From there, **Generate share code** lets you share supported portable settings, while **Export file (.pkn)** creates a local file. To receive a profile, use **Import** in your profile library.
 
-A share code is not a private link, and a full profile file can contain account identifiers and device-specific settings. Review what you are sharing and only import profiles from sources you trust.
+Both options serve different purposes. Codes are convenient for sharing, but they are not private links. A full file may include account identifiers and device-specific settings, so check what you're sending and import profiles from people you trust.
 
 ## How it works
 
-Ponkan uses a React and TypeScript interface inside a Tauri desktop shell. The native Rust backend performs the file operations and communicates with the local Riot Client and Riot's player preference service.
+Ponkan is built with React and TypeScript for the interface and Tauri for the desktop application. Its Rust backend handles local files and communicates with the Riot Client and Riot's player preference service.
 
 | Operation | What happens |
 | --- | --- |
-| Save | Read the authenticated Riot session and cloud preferences, then store them with local configuration data. |
-| Apply | Check that VALORANT is closed, reconcile pending recovery records, validate the session, and prepare local and cloud changes. |
-| Export | Write a local .pkn package with metadata and integrity information. |
-| Import | Validate the selected package or decoded portable settings and add a profile to the library. |
-| Short code | Send portable compressed settings through is.gd and retrieve them when importing a code. |
+| Save | Reads cloud preferences from the current authenticated Riot session and stores them alongside local configuration data. |
+| Apply | Checks that the game is closed, reconciles pending recovery records, validates the session and prepares the local and cloud changes. |
+| Export | Creates a local .pkn package with profile metadata and integrity information. |
+| Import | Checks the selected package or decoded portable settings before adding a profile to the library. |
+| Short code | Uses is.gd to share and retrieve compressed portable settings. |
 
-The application includes transaction and recovery logic intended to reduce the risk of incomplete changes, but recovery behavior has not been fully validated in a real game environment.
+The backend includes transaction and recovery logic to help handle interrupted operations. Testing those recovery paths with live game data is still part of the beta work.
 
-The Riot preferences integration uses undocumented interfaces, not an approved public API. Changes to the Riot Client or VALORANT can affect compatibility.
+The integration relies on undocumented Riot interfaces. Updates to VALORANT or the Riot Client may require changes to Ponkan as well.
 
 <p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Privacy & security
 
-Ponkan does not operate a developer-hosted account system, analytics service or advertising backend. Profiles, local preferences, avatars, recycle bin entries and recovery records are stored on the computer.
+Your profiles, preferences, avatars, recycle bin entries and recovery records are stored on your computer. Ponkan has no separate account system, advertising or developer-hosted analytics service.
 
-The native backend reads the local Riot Client session information and uses authorization tokens in memory to communicate with Riot's preference service. The local HTTPS connection accepts the local Riot certificate; cloud communication uses TLS.
+Saving and applying profiles uses your existing Riot Client session. Authorization tokens are handled in memory by the native backend. The local HTTPS connection accepts the Riot Client's local certificate, while connections to Riot's cloud service use TLS.
 
-Short share codes are optional and use an external service, is.gd. The service can receive the portable profile payload and network metadata. Codes are not encrypted or confidential. Local file export does not require uploading the file.
+If you choose to generate or import a short code, Ponkan communicates with is.gd. That service can receive the compressed settings and network metadata. The codes are not encrypted or confidential. Exporting a local file does not require sending it to that service.
 
-For a detailed account of data handling, see [Privacy](PRIVACY.md). For responsible vulnerability reporting and handling sensitive diagnostic information, see [Security](SECURITY.md).
+You can find the details in [Privacy](PRIVACY.md). The [Security](SECURITY.md) page explains how to report security issues without sharing private information.
 
 ## Limitations
 
-- This is an experimental Windows 11 x64 beta candidate, not a stable release.
-- The repository's Windows CI build has completed successfully. Clean installation and automated tests were checked, but full native end-to-end testing, live recovery and legacy migration are not complete.
-- Riot review and applicable distribution approval remain pending. Compatibility and protection from account restrictions are not guaranteed.
-- The installer is unsigned. There is no automatic updater.
-- Cross-account, cross-device and cross-version restoration may behave differently; portable settings do not necessarily include every original local or cloud field.
-- Two dependency license-notice provenance caveats remain documented in the [third-party inventory](third-party-notices/INDEX.json).
+Version 0.3.0 is the first planned beta for Windows 11 x64. The Windows CI build has passed, and clean installation and automated tests have been checked. Full native testing, recovery with live game data and migration from older versions remain incomplete.
+
+Ponkan is an independent project and has not been approved by Riot. Its settings integration uses undocumented services, so compatibility and protection against account restrictions cannot be guaranteed. Riot review and applicable distribution approval remain pending.
+
+A few other things to keep in mind:
+
+- The installer is currently unsigned, and updates are installed manually.
+- Profiles may behave differently across accounts, computers or game versions. Portable profiles may contain only a subset of the original settings.
+- The [third-party inventory](third-party-notices/INDEX.json) records two remaining questions about the provenance of dependency license notices.
 
 ## Build from source
 
@@ -164,13 +168,13 @@ npm run desktop:build -- --locked
 
 The Windows NSIS installer is generated under `src-tauri/target/release/bundle/nsis/`.
 
-For local development:
+To run the development version:
 
 ```bash
 npm run desktop:dev
 ```
 
-The development configuration uses a separate application identity and storage. Use synthetic data while developing or reproducing problems. The dependency lockfiles are committed to make builds consistent.
+Development builds have their own application identity and storage, separate from the release version. Use example data when developing or reproducing issues. The committed lockfiles help keep dependency versions consistent between builds.
 
 | Directory | Purpose |
 | --- | --- |
@@ -183,38 +187,40 @@ The development configuration uses a separate application identity and storage. 
 
 **Do I need a separate Ponkan account?**
 
-No. The application uses the signed-in Riot Client session for settings operations.
+No. Just use your existing Riot Client session when saving or applying profiles.
 
 **Can I switch profiles while VALORANT is running?**
 
-No. Applying a profile requires the game to be closed.
+Close the game before applying a profile. You can reopen it when Ponkan finishes.
 
 **Are share codes the same as a full backup?**
 
-No. Codes contain supported portable settings; a full .pkn export is a local package and may contain additional sensitive data.
+They serve different purposes. Codes are for sharing supported portable settings, while a full .pkn export is a local package that may include more information, including private settings.
 
-**Does Ponkan guarantee that I will not be restricted by Riot?**
+**Is Ponkan approved by Riot?**
 
-No. The integration uses undocumented services, and the product has not been approved by Riot.
+Not yet. The app uses undocumented services and cannot guarantee that using it will not result in account restrictions.
 
 **Does it update automatically?**
 
-No. New versions will be made available through GitHub Releases.
+Updates are manual. New versions will be available through GitHub Releases.
 
 **Why does the installer warn about an older installation?**
 
-The beta does not automatically migrate legacy profile storage. Preserve your previous data instead of bypassing the guard.
+Automatic migration from legacy profile storage is not supported yet. Keep your old data and backups until a migration path is available.
 
 ## Contributing & support
 
-Report bugs through [GitHub Issues](https://github.com/rfpupo/ponkan/issues). Include the Ponkan version, Windows version, expected behavior and steps to reproduce the issue using synthetic data. Do not attach credentials, account IDs, real .pkn files, cloud snapshots or private screenshots.
+If something doesn't work as expected, open an issue through [GitHub Issues](https://github.com/rfpupo/ponkan/issues). It helps to include your Ponkan and Windows versions, what you expected to happen and how to reproduce the problem.
 
-Keep contributions focused, preserve the existing interface and use the isolated development configuration. Contributions are licensed under MIT.
+Please use example data in reports. Keep credentials, account identifiers, real .pkn files, cloud snapshots and private screenshots out of public issues.
+
+Contributions are welcome. Keep changes focused, follow the existing interface design and use the separate development configuration. Contributions are licensed under MIT.
 
 ## Credits & license
 
-Ponkan is distributed under the [MIT License](LICENSE). The backend integration is adapted from [ValoUtils v1.0.17](https://github.com/windowsedd/ValoUtils). The interface uses React, Tauri, Radix UI, shadcn/ui, Lucide and Poppins, among other components. Development is directed by the project maintainer with AI assistance.
+Ponkan is distributed under the [MIT License](LICENSE). The backend integration is adapted from [ValoUtils v1.0.17](https://github.com/windowsedd/ValoUtils). The project uses React, Tauri, Radix UI, shadcn/ui, Lucide, Poppins and other open-source components. Development is directed by the project maintainer with AI assistance.
 
-See [third-party acknowledgements](LICENSE-THIRD-PARTY.txt) and the [notice inventory](third-party-notices/INDEX.json) for attribution and dependency licensing.
+The [third-party acknowledgements](LICENSE-THIRD-PARTY.txt) and [notice inventory](third-party-notices/INDEX.json) contain the relevant credits and licensing information.
 
 Ponkan isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
