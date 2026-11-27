@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/ponkan.svg" width="260" alt="pon//kan.">
+</p>
+
 # pon//kan.
 
 A free, independent, open-source Windows desktop application for managing VALORANT settings profiles.
@@ -9,6 +13,10 @@ A free, independent, open-source Windows desktop application for managing VALORA
 - Manage saved profiles, favorites and the recycle bin.
 
 ## Download and use
+
+[![Download for Windows](assets/download.svg)](https://github.com/rfpupo/ponkan/releases)
+
+The download becomes available once a release is published.
 
 The 0.3.0 beta candidate targets Windows 11 x64 with WebView2. The installer is unsigned; Windows may show a SmartScreen warning. Obtain the installer only from the official repository's Releases page, and compare its SHA-256 against SHA256SUMS.txt.
 
@@ -27,6 +35,10 @@ Full profile exports and recovery backups may contain private account and game s
 Tested toolchain: Node.js 24.22.3, Rust 1.100.0, MSVC C++ build tools and WebView2.
 
 Run `npm ci` and `npm run desktop:build`. Development builds use separate identity and storage via `npm run desktop:dev`.
+
+## Contributing
+
+Report bugs through GitHub Issues using synthetic data and reproduction steps. Keep changes small, use the isolated development configuration, and never include real profiles, account IDs or credentials. Contributions are licensed under MIT.
 
 ## License
 
