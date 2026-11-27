@@ -1,0 +1,37 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:app:allow-version",
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-close",
+    "allow-list-profiles",
+    "allow-save-profile",
+    "allow-apply-profile",
+    "allow-matching-profiles",
+    "allow-rename-profile",
+    "allow-delete-profile",
+    "allow-list-trash",
+    "allow-restore-trash",
+    "allow-purge-trash",
+    "allow-generate-share-code",
+    "allow-clipboard-read-text",
+    "allow-clipboard-write-text",
+    "allow-import-share-code",
+    "allow-has-pending-share",
+    "allow-import-next-share",
+    "allow-export-pkn",
+    "allow-select-pkn",
+    "allow-import-pkn",
+    "allow-cancel-pkn",
+    "allow-desktop-preferences",
+    "allow-update-desktop-preference"
+  ]
+}

@@ -1,0 +1,40 @@
+Third-party acknowledgements
+
+Backend integration adapted from ValoUtils v1.0.17 by windowsedd.
+https://github.com/windowsedd/ValoUtils
+Licensed under the MIT License.
+
+MIT License
+Copyright (c) 2026 windowsed
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Other components: Tauri (MIT/Apache-2.0), shadcn/ui (MIT), Radix UI (MIT),
+Lucide (ISC), React (MIT), Tailwind CSS (MIT), Poppins font (OFL).
+Consult installed package LICENSE files for authoritative notices.
+
+Installer template adapted from Tauri, commit 9319e539f34237035cb4693bed9246660bc0a926:
+https://github.com/tauri-apps/tauri/blob/9319e539f34237035cb4693bed9246660bc0a926/crates/tauri-bundler/src/bundle/windows/nsis/installer.nsi
+Copyright (c) 2017 - Present Tauri Apps Contributors; MIT OR Apache-2.0.
+The corresponding license texts are included in third-party-notices.
+
+For dependencies licensed under MPL-2.0, the third-party-notices/INDEX.json
+inventory identifies the corresponding unmodified crate source archives.
+See https://www.mozilla.org/MPL/2.0/ for the license terms.
+The inventory records any unresolved notice provenance separately.

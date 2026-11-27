@@ -1,0 +1,541 @@
+/* Existing Radix/Shadcn primitives: motion is visual only, never intercepts input. */
+.ponkan-empty-state img {
+  height: 174px;
+  width: auto;
+  object-fit: contain;
+}
+.ponkan-empty-state [data-slot="empty-header"] {
+  gap: 17px;
+}
+.ponkan-settings {
+  gap: 16px;
+  margin-top: 19px;
+  padding-bottom: 18px;
+}
+.ponkan-setting-row {
+  min-height: 51px;
+  padding-block: 9px;
+}
+.ponkan-setting-select[data-slot="select-trigger"],
+.ponkan-sort-trigger[data-slot="select-trigger"] {
+  border-radius: var(--radius);
+  transition:
+    border-color 160ms,
+    background-color 160ms,
+    box-shadow 160ms;
+  gap: 9px;
+}
+[data-slot="select-trigger"]:not(:disabled):hover {
+  border-color: color-mix(in srgb, var(--foreground) 28%, var(--border));
+}
+[data-slot="select-trigger"][data-state="open"] {
+  border-color: var(--ponkan-orange);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ponkan-orange) 12%, transparent);
+}
+.ponkan-select-chevron {
+  transition:
+    transform 190ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 160ms;
+}
+[data-slot="select-trigger"][data-state="open"] .ponkan-select-chevron {
+  transform: rotate(180deg);
+  color: var(--ponkan-orange);
+}
+[data-slot="select-content"],
+[data-slot="dropdown-menu-content"],
+[data-slot="dropdown-menu-sub-content"] {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 5px;
+  box-shadow: 0 12px 32px #0005;
+  z-index: 100;
+  min-width: var(--radix-select-trigger-width, 190px);
+  max-width: min(320px, calc(100vw - 24px));
+}
+.dark [data-slot="select-content"],
+.dark [data-slot="dropdown-menu-content"],
+.dark [data-slot="dropdown-menu-sub-content"] {
+  background: #151515;
+  border-color: #303030;
+  box-shadow: 0 12px 32px #0009;
+}
+[data-slot="select-content"][data-state="open"],
+[data-slot="dropdown-menu-content"][data-state="open"],
+[data-slot="dropdown-menu-sub-content"][data-state="open"] {
+  animation: ponkan-menu-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both !important;
+}
+[data-slot="select-content"][data-state="closed"],
+[data-slot="dropdown-menu-content"][data-state="closed"],
+[data-slot="dropdown-menu-sub-content"][data-state="closed"] {
+  animation: ponkan-menu-out 110ms ease-in both !important;
+  pointer-events: none;
+}
+@keyframes ponkan-menu-in {
+  from {
+    opacity: 0;
+    scale: 0.97;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes ponkan-menu-out {
+  from {
+    opacity: 1;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 0.98;
+  }
+}
+[data-slot="select-item"],
+[data-slot="dropdown-menu-item"] {
+  min-height: 35px;
+  gap: 10px;
+  padding: 7px 11px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 130ms,
+    color 130ms;
+}
+[data-slot="select-item"] {
+  padding-right: 32px;
+}
+[data-slot="select-item"] [data-slot="select-item-text"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-slot="select-item"][data-state="checked"] {
+  color: var(--ponkan-orange);
+  background: color-mix(in srgb, var(--ponkan-orange) 8%, transparent);
+}
+[data-slot="select-item"][data-highlighted],
+[data-slot="dropdown-menu-item"][data-highlighted]:not([data-variant="destructive"]) {
+  background: color-mix(in srgb, var(--ponkan-orange) 13%, var(--popover));
+  color: var(--foreground);
+}
+[data-slot="select-item"][data-state="checked"] > span:first-child {
+  color: var(--ponkan-orange);
+}
+[data-slot="dropdown-menu-item"][data-highlighted]:not([data-variant="destructive"]) > svg {
+  color: var(--ponkan-orange);
+}
+[data-slot="dropdown-menu-item"][data-variant="destructive"][data-highlighted] {
+  background: color-mix(in srgb, var(--destructive) 14%, transparent);
+}
+[data-slot="dropdown-menu-separator"] {
+  margin: 4px 3px;
+}
+[data-slot="dropdown-menu-trigger"][data-state="open"] {
+  background: var(--muted);
+  color: var(--ponkan-orange);
+}
+.ponkan-dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.ponkan-dialog-title svg {
+  color: var(--ponkan-orange);
+  flex: none;
+}
+.ponkan-dialog-destructive svg {
+  color: var(--destructive);
+}
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"] {
+  animation-duration: 200ms !important;
+}
+[data-slot="dialog-overlay"],
+[data-slot="alert-dialog-overlay"] {
+  animation-duration: 170ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="select-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"],
+  [data-slot="dialog-overlay"],
+  [data-slot="alert-dialog-overlay"] {
+    animation-duration: 0.01ms !important;
+  }
+  .ponkan-select-chevron {
+    transition: none !important;
+  }
+}
+
+/* Home shortcuts and non-interactive select labels. */
+.ponkan-home-corner [data-slot="button"]:first-child:hover svg {
+  transform: none;
+}
+.ponkan-home-corner .ponkan-settings-shortcut:hover svg {
+  transform: rotate(30deg);
+}
+.ponkan-home-corner .ponkan-language-shortcut svg {
+  width: 24px;
+  height: 24px;
+}
+.ponkan-home-corner .ponkan-language-shortcut[data-state="open"] {
+  color: var(--ponkan-orange);
+  background: var(--muted);
+}
+.ponkan-select-label {
+  font-weight: 500;
+  cursor: default;
+}
+.ponkan-language-menu[data-slot="dropdown-menu-content"] {
+  width: 190px;
+  min-width: 190px;
+}
+.ponkan-language-menu [data-slot="dropdown-menu-radio-item"] {
+  min-height: 35px;
+  gap: 9px;
+  padding: 7px 30px 7px 11px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 130ms,
+    color 130ms;
+}
+.ponkan-language-menu [data-slot="dropdown-menu-radio-item"][data-state="checked"] {
+  color: var(--ponkan-orange);
+  background: color-mix(in srgb, var(--ponkan-orange) 8%, transparent);
+}
+.ponkan-language-menu [data-slot="dropdown-menu-radio-item"][data-highlighted] {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--ponkan-orange) 13%, var(--popover));
+}
+.ponkan-language-menu [data-slot="dropdown-menu-radio-item-indicator"] {
+  color: var(--ponkan-orange);
+}
+/* Slim native scrolling with the existing palette. No layout changes. */
+.ponkan-window *,
+[data-slot="select-content"],
+[data-slot="dropdown-menu-content"] {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+.ponkan-window *::-webkit-scrollbar,
+[data-slot="select-content"]::-webkit-scrollbar,
+[data-slot="dropdown-menu-content"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.ponkan-window *::-webkit-scrollbar-track,
+[data-slot="select-content"]::-webkit-scrollbar-track,
+[data-slot="dropdown-menu-content"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ponkan-window *::-webkit-scrollbar-thumb,
+[data-slot="select-content"]::-webkit-scrollbar-thumb,
+[data-slot="dropdown-menu-content"]::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--foreground) 30%, var(--background));
+  border-radius: 1px;
+  border: 1px solid var(--background);
+  background-clip: padding-box;
+}
+.ponkan-window *::-webkit-scrollbar-thumb:hover,
+[data-slot="select-content"]::-webkit-scrollbar-thumb:hover,
+[data-slot="dropdown-menu-content"]::-webkit-scrollbar-thumb:hover {
+  background: var(--ponkan-orange);
+  background-clip: padding-box;
+}
+.ponkan-window *::-webkit-scrollbar-thumb:active {
+  background: #df7400;
+}
+.ponkan-window *::-webkit-scrollbar-button,
+[data-slot="select-content"]::-webkit-scrollbar-button,
+[data-slot="dropdown-menu-content"]::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.ponkan-window *::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ponkan-home-corner .ponkan-settings-shortcut:hover svg {
+    transform: none;
+  }
+}
+
+/* Theme-aware window chrome and original artwork with alpha for light mode. */
+.ponkan-window {
+  background: var(--background);
+}
+.ponkan-titlebar {
+  background: var(--background);
+  color: var(--foreground);
+}
+.ponkan-titlebar .title-control {
+  color: var(--foreground);
+}
+.ponkan-titlebar .title-control:hover {
+  background: var(--muted);
+}
+.ponkan-titlebar .title-control.title-close:hover {
+  background: var(--ponkan-orange);
+  color: #000;
+}
+html:not(.dark) .ponkan-titlebar {
+  border-bottom: 1px solid var(--border);
+}
+html:not(.dark) .ponkan-empty-state img {
+  mix-blend-mode: normal;
+  border-radius: 0;
+}
+html:not(.dark) img.ponkan-theme-dark,
+html.dark img.ponkan-theme-light {
+  display: none !important;
+}
+/* Radix asChild changes data-slot on the language trigger. Style the buttons,
+   not the slot attribute, so all three shortcuts share the same metrics. */
+.ponkan-home-corner.ponkan-home-corner > button {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted-foreground);
+  box-shadow: none;
+}
+.ponkan-home-corner.ponkan-home-corner > button > svg {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: transform 200ms ease;
+}
+.ponkan-home-corner.ponkan-home-corner > button:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+.ponkan-home-corner.ponkan-home-corner > button[data-state="open"] {
+  background: var(--muted);
+  color: var(--foreground);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ponkan-home-corner.ponkan-home-corner > button > svg {
+    transition: none !important;
+  }
+}
+
+/* Single restrained corner language for all UI surfaces, including portals. */
+:root,
+.dark {
+  --radius: 4px;
+}
+[data-slot="switch"] {
+  border-radius: var(--radius);
+}
+[data-slot="switch-thumb"] {
+  border-radius: 3px;
+}
+[data-slot="avatar"],
+[data-slot="avatar-image"],
+[data-slot="avatar-fallback"],
+[data-slot="avatar-group-count"],
+[data-slot="avatar"]::after {
+  border-radius: var(--radius);
+}
+/* shadcnstudio alert-12: square edges, 6px left indicator and 10% semantic tint.
+   Preserve Sonner positioning, queue, lifecycle, accessible announcements and actions. */
+:root {
+  --ponkan-alert-success: #15803d;
+  --ponkan-alert-warning: #a16207;
+  --ponkan-alert-info: #1d4ed8;
+}
+.dark {
+  --ponkan-alert-success: #4ade80;
+  --ponkan-alert-warning: #fbbf24;
+  --ponkan-alert-info: #60a5fa;
+}
+[data-sonner-toaster] [data-sonner-toast] {
+  --ponkan-alert-tone: var(--muted-foreground);
+  --border-radius: 0px;
+}
+[data-sonner-toaster] [data-sonner-toast][data-type="success"] {
+  --ponkan-alert-tone: var(--ponkan-alert-success);
+}
+[data-sonner-toaster] [data-sonner-toast][data-type="error"] {
+  --ponkan-alert-tone: var(--destructive);
+}
+[data-sonner-toaster] [data-sonner-toast][data-type="warning"] {
+  --ponkan-alert-tone: var(--ponkan-alert-warning);
+}
+[data-sonner-toaster] [data-sonner-toast][data-type="info"] {
+  --ponkan-alert-tone: var(--ponkan-alert-info);
+}
+[data-sonner-toaster] [data-sonner-toast][data-type="loading"] {
+  --ponkan-alert-tone: var(--ponkan-alert-info);
+}
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] {
+  box-sizing: border-box;
+  background: color-mix(in srgb, var(--ponkan-alert-tone) 10%, var(--popover)) !important;
+  color: var(--ponkan-alert-tone) !important;
+  border: 0 !important;
+  border-left: 6px solid var(--ponkan-alert-tone) !important;
+  border-radius: 0 !important;
+  padding: 14px 16px;
+  gap: 10px;
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+  box-shadow: 0 5px 18px #0003;
+}
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] [data-title] {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] [data-description] {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] [data-icon] {
+  color: inherit;
+  flex: none;
+}
+[data-sonner-toast] [data-button] {
+  border-radius: 3px;
+}
+[data-sonner-toast] [data-close-button] {
+  border-radius: 3px;
+}
+
+/* Favorites share the alert-12 layout, with the profile heart accent. */
+[data-sonner-toaster] [data-sonner-toast].ponkan-favorite-toast[data-type="success"] {
+  --ponkan-alert-tone: #a94e00;
+}
+.dark [data-sonner-toaster] [data-sonner-toast].ponkan-favorite-toast[data-type="success"] {
+  --ponkan-alert-tone: var(--ponkan-orange);
+}
+[data-sonner-toaster] [data-sonner-toast].ponkan-favorite-toast[data-styled="true"] {
+  padding: 11px 14px;
+}
+/* Solid, nearly square scroll thumb in the main app; keep native wheel and drag behavior. */
+.ponkan-window .linear-main::-webkit-scrollbar-track {
+  background: var(--background);
+}
+.ponkan-window .linear-main::-webkit-scrollbar-thumb {
+  min-height: 32px;
+}
+.ponkan-window .linear-main::-webkit-scrollbar-thumb:active {
+  background: var(--ponkan-orange);
+  background-clip: padding-box;
+}
+
+/* Context menus reuse the existing popover identity without inheriting dropdown trigger width. */
+.ponkan-context-menu {
+  z-index: 130;
+  min-width: 164px;
+  max-width: calc(100vw - 16px);
+  max-height: var(--radix-context-menu-content-available-height);
+  overflow: auto;
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 12px 32px #0005;
+  outline: none;
+  font-family: Poppins, sans-serif;
+  font-size: 13px;
+}
+.dark .ponkan-context-menu {
+  background: #151515;
+  border-color: #303030;
+  box-shadow: 0 12px 32px #0009;
+}
+.ponkan-context-menu[data-state="open"] {
+  animation: ponkan-menu-in 150ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.ponkan-context-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 9px;
+  min-height: 30px;
+  border-radius: 3px;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+.ponkan-context-item svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.ponkan-context-item[data-highlighted],
+.ponkan-context-item[data-state="open"] {
+  background: color-mix(in srgb, var(--ponkan-orange) 13%, var(--popover));
+  color: var(--foreground);
+}
+.ponkan-context-item[data-highlighted]:not([data-variant="destructive"]) > svg,
+.ponkan-context-item[data-state="open"] > svg {
+  color: var(--ponkan-orange);
+}
+.ponkan-context-item[data-disabled] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.ponkan-context-item[data-variant="destructive"] {
+  color: var(--destructive);
+}
+.ponkan-context-item[data-variant="destructive"][data-highlighted] {
+  background: color-mix(in srgb, var(--destructive) 14%, transparent);
+}
+.ponkan-context-label {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  padding: 5px 9px 3px;
+}
+.ponkan-context-separator {
+  height: 1px;
+  background: var(--border);
+  margin: 3px 4px;
+}
+.ponkan-context-chevron {
+  margin-left: auto;
+}
+.ponkan-code-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.ponkan-code-input > [data-slot="input"] {
+  flex: 1;
+  min-width: 0;
+}
+.ponkan-code-input > [data-slot="button"] {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+.ponkan-window p,
+.ponkan-profile-name span,
+[data-slot="dialog-description"],
+[data-slot="alert-dialog-description"],
+[data-slot="dialog-content"] p,
+.ponkan-about span {
+  user-select: text;
+  -webkit-user-select: text;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ponkan-context-menu {
+    animation-duration: 0.01ms !important;
+  }
+}
