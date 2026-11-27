@@ -40,7 +40,7 @@ jobs:
           "$hash  $($files[0].Name)" | Set-Content -Encoding ascii (Join-Path $dir 'SHA256SUMS.txt')
       - name: Upload candidate for manual review (not a release)
         if: github.event_name == 'workflow_dispatch'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: ponkan-unsigned-windows-candidate
           path: |
