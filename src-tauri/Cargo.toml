@@ -27,7 +27,7 @@ base64 = "0.22"
 flate2 = "1"
 uuid = { version = "1", features = ["v4"] }
 time = { version = "=0.3.55", features = ["serde-well-known"] }
-sha2 = "0.10"
+sha2 = "0.11"
 unicode-normalization = "0.1"
 walkdir = "2"
 sysinfo = "0.35"
